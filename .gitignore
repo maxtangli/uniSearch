@@ -1,0 +1,6 @@
+uniSearch/Temp/
+*.sln
+uniSearch/Library/
+*.csproj
+uniSearch/Assets/NGUI/
+uniSearch/uniSearch.userprefs
