@@ -78,13 +78,9 @@ declare fields(interface). use IDE to generate constructor. 1min
 
 ## UIFilter
 
-### 
+### declare interface. map issues. first flow then detail. 0.5h
 
-declare interface. map issues. first flow then detail. 0.5h
-
-### 
-
-Mapping from optionGroup data to ui?
+### Mapping from optionGroup data to ui?
 what matter is overall flow, such as the timing of use load members.
 
 1. first time optionGroups.set, where none of ui specified.
@@ -95,30 +91,80 @@ necessary?
 
 rough version seems not bad. 0.5h
 
-### 
+### how to test?
 
-how to test?
+### filter option names Conversion 1.3h
 
-# TODO
+OptionGroup -> Predicate<T> match
+list OG -> match1 && match2 ...
+
+origin options
+display options
+
+## about Ranger and Pager interaction
+
+request
+filterCondition
+sorterCondition
+*rangeCondition:index,count
+
+response
+requestBackup
+result data list, resultDataList.count, 
+numTotal]
+
+## data flow
+
+init
+ DataProvider.searcherCandidate -> UISearcher.searcherData
+ interaction
+interaction
+ UISearcher.searcherData -> DataProvider.fetch
+ 
+## data -> prefab
+
+## TOO slow
+onClick -> controller ?
+controller -> dataProvider -> Instantiate -> setGameObjects 100ms
+
+
+# TODO -> first beta
 
 - [x] github init
 - [x] overall design
-- [x] custom editor: later do since too complex
+
 - [x] UIFilterGroups implemention
-- [ ] a sample of UIFilterGroup view
-- [ ] design of Model
-- [ ] implement Filter
-- [ ] controller
+- [x] a sample of UIFilterGroup view: beta
+- [x] implement Filter
+- [x] controller
 
-- [ ] design of Sort
-- [ ] implement Sort
-- [ ] design of Pager
-- [ ] implement Pager
+- [x] design of Pager
+- [x] implement Pager
+
+- [x] UISearcher
+- [x] Ranger and numTotal issues
+- [x] organize data flow
+- [x] design of Model
+- [x] data to prefab issues
+
+- [x] bug: unintended clones. -> .Contains
+- [ ] TOO SLOW!!!!!(1s per search)? set timer.
+
+- [ ] refine OptionGroup
+- [ ] refine UIOptionGroup classes
+
 - [ ] organize code
-
 - [ ] github doc
 
-- [x] upload ruby codes
-- [x] upload reading list
-- [x] refine resume
-- [ ] go
+# TODO -> refine
+- [] reference search mechanisms (if exist) in popular UILibrary: WinForm,WPF,WxWidgets etc.
+- [] read Unity official examples and popular library codes to master unity techniques.
+
+- [] collect requirements by viewing search-concerned scenes in IOS popular games.
+- [] refine code by viewing collected requirements.
+- [] made demos for collected requirements.
+
+# TODO -> low priority
+- [ ] custom editor [later do since too complex]
+- [ ] design of Sort [later do since not important]
+- [ ] implement Sort [later do since too important]
