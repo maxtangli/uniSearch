@@ -17,7 +17,7 @@ public class UIOptionGroupsFilterEditor : Editor  {
 		if (showOptionGroups) {
 			foreach(var optionGroup in g.FilterData) {
 				EditorGUILayout.LabelField (
-					optionGroup.Title + ":" + string.Concat(optionGroup.Options.ToArray()));
+					optionGroup.Title + ":" + string.Concat(optionGroup.ToArray()));
 			}
 		}
 		EditorGUILayout.EndVertical ();

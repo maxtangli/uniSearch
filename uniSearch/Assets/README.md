@@ -5,9 +5,9 @@
 
 # Reminds
 
-Design core issues before coding
-Think about the priority of each part when coding
-Stop and think carefully when coding is not fluently
+DESIGN core issues before coding
+Think about the PRIORITY of each part when coding
+Stop and RETHINK carefully when coding is not fluently
 
 # Design 2h (however, more than 150 hours of failed design/redesign/coding/recoding before)
 
@@ -127,6 +127,26 @@ interaction
 onClick -> controller ?
 controller -> dataProvider -> Instantiate -> setGameObjects 100ms
 
+(300/600ms per search at first times, then keep 50ms common/300ms rarely)
+slow by first times because of assembly loading?
+
+## rethink of UIFilter/UIOptionGroup/UIOption design
+better to list all possibilities.
+provider -> serach candidates
+uiSearch -> search condition: a sub set of candidates 
+
+uiSearch -> list<uiOptionGroup>
+.set
+.get
+
+uiOptionGroup -> uiOption
+.set
+.get
+
+ways of mapping list<data> <-> list<UI>
+- by index: simpest <- use this now
+- by inspector & stub: convenient
+- by ui.data.title/name: not practical, maybe help in implementation.
 
 # TODO -> first beta
 
@@ -148,23 +168,26 @@ controller -> dataProvider -> Instantiate -> setGameObjects 100ms
 - [x] data to prefab issues
 
 - [x] bug: unintended clones. -> .Contains
-- [ ] TOO SLOW!!!!!(1s per search)? set timer.
 
 - [ ] refine OptionGroup
 - [ ] refine UIOptionGroup classes
 
+- [] refine Model
+
 - [ ] organize code
 - [ ] github doc
 
-# TODO -> refine
-- [] reference search mechanisms (if exist) in popular UILibrary: WinForm,WPF,WxWidgets etc.
-- [] read Unity official examples and popular library codes to master unity techniques.
-
-- [] collect requirements by viewing search-concerned scenes in IOS popular games.
-- [] refine code by viewing collected requirements.
-- [] made demos for collected requirements.
-
-# TODO -> low priority
+# TODO -> later
 - [ ] custom editor [later do since too complex]
 - [ ] design of Sort [later do since not important]
 - [ ] implement Sort [later do since too important]
+- [ ] TOO SLOW!!!!!? set timer.(300/600ms per search at first times, then keep 50ms common/300ms rarely)
+
+# TODO -> refine
+- [ ] reference search mechanisms (if exist) in popular UILibrary: WinForm,WPF,WxWidgets etc.
+- [ ] read Unity official examples and popular library codes to master unity techniques.
+
+- [ ] collect requirements by viewing search-concerned scenes in IOS popular games.
+- [ ] refine code by viewing collected requirements.
+- [ ] made demos for collected requirements.
+

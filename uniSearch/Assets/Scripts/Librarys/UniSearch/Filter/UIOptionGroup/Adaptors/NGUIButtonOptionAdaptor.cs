@@ -4,22 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-// Manage OptionGroup.
-
-// adapt a NGUIButton with a UILabel child into UIOption
+// Example: adapt a NGUIButton with a UILabel child and a UISprite into UIOption
 public class NGUIButtonOptionAdaptor : UIOption {
 	#region implemented abstract members of UIOption
 
 	UIButton button;
 	UILabel label;
 
-	public override Option Option {
+	OptionData optionData;
+	public override OptionData OptionData {
 		get {
-			return new Option(label.text, !button.isEnabled);
+			return optionData;
 		}
 		set {
-			label.text = value.Name;
-			button.isEnabled = !value.Selected;
+			optionData = value;
+			label.text = string.Format("{0}{1}", value.IsChecked ? "+":"-", value.Name);
 		}
 	}
 	
@@ -30,7 +29,7 @@ public class NGUIButtonOptionAdaptor : UIOption {
 	}
 
 	void onButtonClick() {
-		Option = Option.select ();
+		OptionData = OptionData.AntiCheck();
 		OnInteraction ();
 	}
 

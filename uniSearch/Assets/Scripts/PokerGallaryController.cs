@@ -48,33 +48,33 @@ public class PokerGallaryController : MonoBehaviour {
 }
 
 public interface IFilter<T> {
-	bool match (T obj, OptionGroup condition);
-	OptionGroup Candidate {get;}
+	bool match (T obj, OptionGroupData condition);
+	OptionGroupData Candidate {get;}
 
 }
 
 public interface IFilterChain<T> {
-	bool match (T obj, IEnumerable<OptionGroup> conditions);
-	IEnumerable<OptionGroup> Candidates {get;}
+	bool match (T obj, IEnumerable<OptionGroupData> conditions);
+	IEnumerable<OptionGroupData> Candidates {get;}
 }
 
 public class PredicateFilter<T> : IFilter<T> {
 	IDictionary<string, Predicate<T>> optionNameToPredicates;
-	OptionGroup candidate;
-	public PredicateFilter(OptionGroup candidate, IDictionary<string, Predicate<T>> optionNameToPredicates) {
-		System.Diagnostics.Debug.Assert (candidate.Options.Count () == optionNameToPredicates.Count);
+	OptionGroupData candidate;
+	public PredicateFilter(OptionGroupData candidate, IDictionary<string, Predicate<T>> optionNameToPredicates) {
+		System.Diagnostics.Debug.Assert (candidate.Count () == optionNameToPredicates.Count);
 		this.candidate = candidate;
 		this.optionNameToPredicates = optionNameToPredicates;
 	}
 	
 	#region IFilter implementation
 	
-	public bool match (T obj, OptionGroup condition)
+	public bool match (T obj, OptionGroupData condition)
 	{
-		return condition.SelectedOptionNames.Any (optionName => getPredicate (optionName) (obj));
+		return condition.Any(x => getPredicate (x.Name) (obj));
 	}
 
-	public OptionGroup Candidate {
+	public OptionGroupData Candidate {
 		get {
 			return candidate;
 		}
@@ -96,12 +96,12 @@ public class FilterChain<T> : IFilterChain<T> {
 	
 	#region IFilterChain implementation
 	
-	public bool match (T obj, IEnumerable<OptionGroup> conditions)
+	public bool match (T obj, IEnumerable<OptionGroupData> conditions)
 	{
 		return conditions.All (x => getFilter (x).match (obj, x));
 	}
 
-	public IEnumerable<OptionGroup> Candidates {
+	public IEnumerable<OptionGroupData> Candidates {
 		get {
 			return filters.Select(x => x.Candidate);
 		}
@@ -109,7 +109,7 @@ public class FilterChain<T> : IFilterChain<T> {
 
 	#endregion
 	
-	IFilter<T> getFilter(OptionGroup condition) {
+	IFilter<T> getFilter(OptionGroupData condition) {
 		return filters.Where (x => x.Candidate.SameCandidate (condition)).Single ();
 	}
 }
@@ -152,8 +152,8 @@ public class CardDataProvider : DataProvider<Card> {
 	SearcherData searchCandidate;
 
 	public CardDataProvider() {
-		OptionGroup colorOptionGroup = new OptionGroup("COLOR",new string[] {"HEART","SPADE","CLUB","DIAMOND"});
-		IEnumerable<OptionGroup> optionGroups = new List<OptionGroup> () {
+		OptionGroupData colorOptionGroup = new OptionGroupData("COLOR",OptionData.CreateMany("HEART","SPADE","CLUB","DIAMOND"));
+		IEnumerable<OptionGroupData> optionGroups = new List<OptionGroupData> () {
 			colorOptionGroup
 		};
 		searchCandidate = new SearcherData (new FilterData (optionGroups), new SorterData (), new RangerData ());
