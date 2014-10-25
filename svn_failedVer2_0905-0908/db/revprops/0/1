@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 4
+tang
+K 8
+svn:date
+V 27
+2014-09-05T08:59:46.481518Z
+K 7
+svn:log
+V 81
+Head version. Inherit from svn_learnNGUI. Begin CardCollection coding and design.
+END

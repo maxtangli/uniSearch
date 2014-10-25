@@ -13,3 +13,25 @@ public static class UnityUtils {
 		return component;
 	}
 }
+
+/*
+public static class IEnumerableExtensions {
+	// By default, MonoDevelop's configuration not support IEnumerable.Zip which comes from .net 4.0.
+	// TODO configure issues.
+	// http://stackoverflow.com/questions/16927845/cs1061-cs0117-system-linq-enumerable-does-not-contain-a-definition-for-zip
+	public static IEnumerable<T> Zip<A, B, T>(
+		this IEnumerable<A> seqA, IEnumerable<B> seqB, Func<A, B, T> func)
+	{
+		if (seqA == null) throw new ArgumentNullException("seqA");
+		if (seqB == null) throw new ArgumentNullException("seqB");
+		
+		using (var iteratorA = seqA.GetEnumerator())
+			using (var iteratorB = seqB.GetEnumerator())
+		{
+			while (iteratorA.MoveNext() && iteratorB.MoveNext())
+			{
+				yield return func(iteratorA.Current, iteratorB.Current);
+			}
+		}
+	}
+}*/

@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 4
+tang
+K 8
+svn:date
+V 27
+2014-07-24T11:28:24.200236Z
+K 7
+svn:log
+V 31
+refactor UIGameObjectsPager.cs.
+END

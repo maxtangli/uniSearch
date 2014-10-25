@@ -51,6 +51,7 @@ public static class NGUIExtension {
 		}
 	}
 
+	// TODO offical forum said that NGUITools.AddChild() should be used.
 	enum LOCAL_TRANSFORM_PATTERN {Keep = 0, Free = 1, Identity = 2}
 	static void AddChild (GameObject parent, GameObject child, 
 	                             LOCAL_TRANSFORM_PATTERN pattern = LOCAL_TRANSFORM_PATTERN.Keep ) {

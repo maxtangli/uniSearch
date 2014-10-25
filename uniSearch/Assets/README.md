@@ -148,6 +148,13 @@ ways of mapping list<data> <-> list<UI>
 - by inspector & stub: convenient
 - by ui.data.title/name: not practical, maybe help in implementation.
 
+## my feeling now @2014/10/25 19:01
+finally I made a beta that seems like a library!
+A little, really little success, but finally I did it! Good Job!
+Next step? 
+- show this to other people and get feedback. 
+- review the code by myself and try to improve.
+
 # TODO -> first beta
 
 - [x] github init
@@ -169,12 +176,15 @@ ways of mapping list<data> <-> list<UI>
 
 - [x] bug: unintended clones. -> .Contains
 
-- [ ] refine OptionGroup
-- [ ] refine UIOptionGroup classes
+- [x] refine OptionGroup
+- [x] refine UIOptionGroup classes
 
-- [] refine Model
+- [x] solve bug: filter not work.
+- [x] refine Model
+- [x] organize pj
 
-- [ ] organize code
+- [ ] refine example: made UICheckBox.
+- [ ] refine example: provide more filter option.
 - [ ] github doc
 
 # TODO -> later
@@ -182,6 +192,7 @@ ways of mapping list<data> <-> list<UI>
 - [ ] design of Sort [later do since not important]
 - [ ] implement Sort [later do since too important]
 - [ ] TOO SLOW!!!!!? set timer.(300/600ms per search at first times, then keep 50ms common/300ms rarely)
+- [ ] Unity + MonoDevelop support for 4.0, in order to use Tuple. 
 
 # TODO -> refine
 - [ ] reference search mechanisms (if exist) in popular UILibrary: WinForm,WPF,WxWidgets etc.
@@ -190,4 +201,3 @@ ways of mapping list<data> <-> list<UI>
 - [ ] collect requirements by viewing search-concerned scenes in IOS popular games.
 - [ ] refine code by viewing collected requirements.
 - [ ] made demos for collected requirements.
-
