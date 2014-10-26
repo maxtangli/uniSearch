@@ -5,7 +5,7 @@ using System.Linq;
 using System;
 
 // Implement UIOptionGroup by simple get/set. Typically used as NullPattern.
-public class UIStubOptionGroup : UIOptionGroup {
+public class UINullOptionGroup : UIOptionGroup {
 	#region implemented abstract members of UIOptionGroup
 
 	OptionGroupData optionGroupData;

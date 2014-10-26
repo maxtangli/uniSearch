@@ -5,7 +5,7 @@ using System.Linq;
 using System;
 
 // Implement UIFilter by a mapping between List<OptionGroup> and List<UIOptionGroup>.
-// FilterData.set : 
+// TODO: inspector support for mapping setting OptionGroupData.Title -> UIOptionGroup
 public class UIOptionGroupsFilter : UIFilter {
 		
 	#region implemented abstract members of UIFilter

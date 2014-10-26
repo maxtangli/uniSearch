@@ -8,7 +8,7 @@ public abstract class UIRanger : MonoBehaviour {
 		get;set;
 	}
 	// typically, numTotal should be set BEFORE RangerData.
-	public abstract int numTotal {
+	public abstract int NumTotal {
 		get;set;
 	}
 	// when filter/sorter changed, rangerData should be reset to default.
@@ -22,3 +22,4 @@ public abstract class UIRanger : MonoBehaviour {
 		}
 	}
 }
+

@@ -10,7 +10,7 @@ public abstract class UISearcher : MonoBehaviour
 	public abstract SearcherData SearcherData {
 		get;set;
 	}
-	public abstract int numTotal {
+	public abstract int NumTotal {
 		get;set;
 	}
 

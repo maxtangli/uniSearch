@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,19 +22,19 @@ public class UIFSRSearcher : UISearcher {
 		}
 	}
 
-	public override int numTotal {
+	public override int NumTotal {
 		get {
-			return uiRanger.numTotal;
+			return uiRanger.NumTotal;
 		}
 		set {
-			uiRanger.numTotal = value;
+			uiRanger.NumTotal = value;
 		}
 	}
 	#endregion
 
 	void Awake() {
-		uiFilter = uiFilter ?? GetComponentInChildren<UIFilter> ();
-		uiSorter = uiSorter ?? GetComponentInChildren<UISorter> ();
+		uiFilter = uiFilter ?? GetComponentInChildren<UIFilter> () ?? gameObject.AddComponent<UINullFilter>();
+		uiSorter = uiSorter ?? GetComponentInChildren<UISorter> () ?? gameObject.AddComponent<UINullSorter>();
 		uiRanger = uiRanger ?? GetComponentInChildren<UIRanger> ();
 		
 		uiFilter.Interaction += onUIFilter;

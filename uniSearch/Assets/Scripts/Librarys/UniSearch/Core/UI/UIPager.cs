@@ -19,7 +19,7 @@ public abstract class UIPager : UIRanger {
 			return new RangerData(0, PagerData.NumRecrodPerPage);
 		}
 	}
-	public override int numTotal {
+	public override int NumTotal {
 		get {
 			return PagerData.NumRecord;
 		}

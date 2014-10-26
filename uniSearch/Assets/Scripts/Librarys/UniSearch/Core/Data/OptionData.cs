@@ -45,6 +45,8 @@ public class OptionData {
 		return SpecificCheck (!IsChecked);
 	}
 
+	// NOTE: seems no meaning to compare with two OptionData
+	/*
 	public override string ToString ()
 	{
 		return string.Format ("{0}{1}", isChecked ? "+" : "-", Name);
@@ -76,5 +78,5 @@ public class OptionData {
 	public override int GetHashCode ()
 	{
 		return Name.GetHashCode() | IsChecked.GetHashCode();
-	}
+	}*/
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System;
 
 // implement UIOptionGroup by a list of UIOption
-public class UIOptionsOptionGroup : UIOptionGroup {
+public class UIOptionList : UIOptionGroup {
 
 	[SerializeField]
 	OptionGroupData optionGroupData;

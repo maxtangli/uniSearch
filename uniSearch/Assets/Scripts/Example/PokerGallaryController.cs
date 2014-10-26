@@ -32,7 +32,7 @@ public class PokerGallaryController : MonoBehaviour {
 
 	void onDataFetched (DataProviderResult<Card> result)
 	{
-		uiSearcher.numTotal = result.numFiltered;
+		uiSearcher.NumTotal = result.numFiltered;
 		// buggy code: InstantiatePrefab executed unintended multiple times.
 		//  Func<Card, GameObject> dataToPrefab = card => UnityUtils.InstantiatePrefab(uiCardImagePrefab, p => p.Card = card).gameObject;
 		//  IEnumerable<GameObject> prefabs = result.datas.Select (dataToPrefab);
