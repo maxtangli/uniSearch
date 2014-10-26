@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\UIOptionList.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Example\PokerGallaryController.cs" Line="7" Column="36" />
+      <File FileName="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\UIOptionList.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

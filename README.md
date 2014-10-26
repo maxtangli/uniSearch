@@ -3,83 +3,61 @@ uniSearch(developing)
 
 A practice aiming at a library to simplify Unity UI filter/sorter/pager workflow.
 
-## バックグラウンド
+## User Story: a novice unity programmer's happy workday.
 
-- 検索UIとは：Filt/Sort/Range/Pageなどの検索条件に関するUI機能
-- ゲーム中、検索UIはよくある機能。
-- Console・Web・Mobileより、UIの形が違いたりしている。
-- ソーシャルゲームの場合、負荷軽減のためロカール検索は普通で、リモート検索もある。
+Suppose you are an novice Unity Programmer in a poker game project, and you are asked to made a scene of poker galary.
 
-## 問題点
+Here's the requirements: 
 
-検索UIを作るのは難しくないが、Button・DialogBoxのような標準UI概念がないので：
+1. There are totally 52 kinds of poker cards.
+2. Show 5 cards per pages.
+3. User can choose which the color and point of poker cards to shown.
 
-- 同じ機能を何度も作らなければならない。
-- 人により作り方が違い。
-- 細かいところが考えていない恐れがあり。
-- 工数のため、一番よく使わる検索オプションしか提供しない傾向。
+Since the project is well organized and designed, you soon find two classes made by Main Programmer can be reused here:
 
-## 解決案
+1. Card class, which means card data.
+2. UICardImage prefab, the view of a card, which can be customized by UICardImage.set(Card card)
 
-検索UIライブラリーを用意し、検索UI機能を標準化し、工数を出来るだけ軽減する。
+Thus, you move into your scene (with UIRoot and other things prepared) begin your work by inspector:
 
-そのUIライブラリーは、主に以下３つの部分があります：
-1. 検索用データのインターフェイス
-2. 検索用データより、ロカール検索処理用のクラス
-3. 検索用データを提供するUIコンポーネント
+1. Create a GameObject, Add a UIGrid. (4 key stroke: Ctrl+N, Ctrl+A, g, Enter)
+2. Drag 5 UICardImage Prefab into UIGrid. (5 mouse drag)
+3. In UIGrid inspector, adjust Cell Width and click Execute. (3 key stroke for digit "140", 1 mouse click) 
 
-### Controller Code
+You are happy to made a raw view without search support in 1 minute, as picture below shows, with just 13 key/mouse operations and 0 lines of code.
 
-UniUISearcher uiSearcher; // later descripted
-UniSearcher<CardData> searcher;
-void Start() {
- IEnumerable<CardData> fullDatas = getFullDatas();
- 
-// declare search condition and execution
-UniSearcher<CardData> searcher = new UniSearcher<CardData>(
-// data collection to be searched
-fullDatas,
-// filter decleration
-'レアリティー', // displayed filter title
- 'Nレア' , x => x.rarity = N, // displayed filter option, and its execution
- 'Rレア' , x => x.rarity = R,
- 'SRレア', x => x.rarity = SR,
-'攻撃力',
- '<1000' , x => x.atk < 1000,
- '1000-1999', x => x.atk >= 1000 && x.atk < 2000
- '2000~' x => x.atk >= 2000,
-....
-// sorter declartion
-'レアリティー順', x.rarity, SortType.ASC // displayed sorter title, and its execution
-'攻撃力順', x.atk, SortType.ASC
-...
-);
+TODO image1 view/hierachy
 
- uiSearcher.onInteraction += onUISearcher;
- uiSearcher.searcherData = searcher.DefaultSearcherData;
- onUISearcher();
-}
-void onUISearcher() {
- searcher.doSearch(uiSearcher.searcherData, updateView);
-}
-void updateView(UniSearchResult result) {
- // update scene's objects using result.datas/.numRecordAll/.numRecordAfterFilt/.numRecordAfterRange etc.
- ....
-}
+Here comes the question: In such a well designed project, what would be the time cost to made things like image2 from image1?
 
-### UniUISearcherの説明
-
+Here's your step with UniSearch:
+(NOTE: steps will be furthur simplified in future)
 TODO
 
-UniUIsearcher: provide filter/sorter/ranger data.
-UniUIFilter: provide filter data.
- UniUIOptionListFilter : provider filter data by a list of UIOption.
-  MyPjFilterPrefab : Project's standard filter prefab.
-UniUISorter
-UniUIRanger: provide ranger data.
- UniUIPager: provide ranger data by pager data.
-  NGUI4Button1LabelPager: provide pager data by 4 UIButton and 1 UILabel.  
-   MyPjPagerPrefab : Project's standard pager prefab.
+1. Write a CardDataProvider class to support searching.
+2. Made a UISearcher by inspector.
+- Create a GameObject, add a UIFSRSearcher.
+- Drag a PJFilter Prefab into it.
+- Drag a PJPager Prefab into it.
+3. Write a PokerGallaryController class to handle interactions of UISearcher by CardDataProvider:
+4. Execute in editor to init UISearcher.
+
+You finished these things in 4 minutes. Add by the prior 1 minute, you spent totally 5 minutes to get today's task done.
+
+You reported your task and ask if any other task to do, but the main programmer replyed as below:
+
+"You should understand why you are assigned 8 hours for a 5-mintues task. 
+In our company, the main responsibility for a novice engineer IS NOT to do low-technology-level tasks, which has been almost eliminated by frameworks, libraries and components made by our master engineers! 
+Your main responsibility IS learning, learning and learning! 
+Best wishes for your grow up and the day that you join our master engineers and do real coding!"
+
+Feeling moving and encouraged, you go to the book store and pick up some books in topic of Object-Oriented Design.
+Taking the book back to your working desk, sit down, you said to yourself:
+"Now it's the start for my today's work!"
+
+## Overview
+
+TODO
    
 ## Q&A
 

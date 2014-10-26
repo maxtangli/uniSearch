@@ -46,10 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Example\Card.cs" />
      <Compile Include="Assets\Scripts\Example\CardDataProvider.cs" />
+     <Compile Include="Assets\Scripts\Example\PJCommon\Card.cs" />
+     <Compile Include="Assets\Scripts\Example\PJCommon\UICardImage.cs" />
      <Compile Include="Assets\Scripts\Example\PokerGallaryController.cs" />
-     <Compile Include="Assets\Scripts\Example\UICardImage.cs" />
      <Compile Include="Assets\Scripts\Librarys\MyUtils\NGUIExtension.cs" />
      <Compile Include="Assets\Scripts\Librarys\MyUtils\UnityUtils.cs" />
      <Compile Include="Assets\Scripts\Librarys\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
@@ -205,10 +205,10 @@
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\Actor\IEnumerableDataProvider.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\Actor\PredicatesFilter.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\Adaptors\NGUIButtonOptionAdaptor.cs" />
+     <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\OptionGroup\UINullOptionGroup.cs" />
+     <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\OptionGroup\UIOptionList.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\UINullFilter.cs" />
-     <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\UINullOptionGroup.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\UIOptionGroupsFilter.cs" />
-     <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\UIOptionList.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Ranger\NGUI4B1LPager.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Ranger\UINullRanger.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Searcher\UIFSRSearcher.cs" />

@@ -186,13 +186,14 @@ Next step?
 - [ ] refine example: made UICheckBox.
 - [ ] refine example: provide more filter option.
 
+- [ ] search controller component: DataProvider<T> should be a MonoBehaviour, how? reference to Event.args solution! 
 - [ ] github doc
 
 # TODO -> later
 - [ ] custom editor [later do since too complex]
 - [ ] design of Sort [later do since not important]
-- [ ] implement Sort [later do since too important]
-- [ ] TOO SLOW!!!!!? set timer.(300/600ms per search at first times, then keep 50ms common/300ms rarely)
+- [ ] implement Sort [later do since not important]
+- [ ] TOO SLOW!!!!!? set timer.(300/600ms per search at first times, then keep 50ms common/300ms rarely, reason? count down each part to see.)
 - [ ] Unity + MonoDevelop support for 4.0, in order to use Tuple. 
 
 # TODO -> refine
