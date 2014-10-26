@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-// implement UIOptionGroup by a list of UIOption
+// implement UIOptionGroup by a list of pre-setted UIOption
 public class UIOptionList : UIOptionGroup {
 
 	[SerializeField]
@@ -47,3 +47,4 @@ public class UIOptionList : UIOptionGroup {
 		OnInteraction ();
 	}
 }
+

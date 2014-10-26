@@ -12,6 +12,34 @@ public static class UnityUtils {
 		init (component);
 		return component;
 	}
+
+	public enum LOCAL_TRANSFORM_PATTERN {Keep = 0, Free = 1, Identity = 2}
+	public static void AddChild (GameObject parent, GameObject child, 
+	                      LOCAL_TRANSFORM_PATTERN pattern = LOCAL_TRANSFORM_PATTERN.Keep ) {
+		if (parent == null || child == null) {
+			throw new System.ArgumentNullException();
+		}
+		
+		Transform t = child.transform;
+		if (pattern == LOCAL_TRANSFORM_PATTERN.Free) {
+			t.parent = parent.transform;
+		} else if (pattern == LOCAL_TRANSFORM_PATTERN.Keep) {
+			var oldPosition = t.localPosition;
+			var oldRotation = t.localRotation;
+			var oldScale = t.localScale;
+			t.parent = parent.transform;
+			t.localPosition = oldPosition;
+			t.localRotation = oldRotation;
+			t.localScale = oldScale;
+		} else if (pattern == LOCAL_TRANSFORM_PATTERN.Identity) {
+			t.parent = parent.transform;
+			t.localPosition = Vector3.zero;
+			t.localRotation = Quaternion.identity;
+			t.localScale = Vector3.one;
+		} else {
+			throw new System.ArgumentException();
+		}
+	}
 }
 
 /*
