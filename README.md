@@ -57,14 +57,64 @@ Taking the book back to your working desk, sit down, you said to yourself:
 
 ## Overview
 
+Data Querying UI(filter/sorter/pager) is common feature in games. 
+In Unity it's easy to made such things, but since no standard solution exists:
+- You should write code to handle trivial things: interaction, get data for searching condition in UI, update searching condition, etc.
+- You may failed to consider some cases: maintainability, flexibility, error handling, etc.
+- Hard to reuse in and between projects.
+- Not enough convenience: In a project, Querying UI is tend to provide little search conditions (since complex ones cost labours), which do not provide enough convenience for users.  
 
-Role, Class, Function
+Addressing at this, UniSearch provide a standard solution such that:
+- Least lines of code is need.
+- Don't make you think, since all cases handled properly.
+- Reusable.
+- Complex searching UI is OK since its labour cost is nearly the same as simple ones. 
 
-Model: IDataProvider, support data searching by SearcherData
-Controller: user wrote script, init and update UISearcher by IDataProvider 
-View: UISearcher, presentation of SearcherData.   
+In UniSearch, the process is simplified by three parts:
 
+1. Model
 
+In most cases, the mainly code you need to write is a IDataProvider that provide datas for searching conditions,
+which is typically implemented by few lines:
+
+public class CardDataProvider : IDataProvider<Card> {
+	IEnumerableDataProvider<Card> provider;
+	public CardDataProvider() {
+		var allCards = Enumerable.Range (1, 52).Select (
+			x => new Card ( CardUtil.CodeToCardColor(x), CardUtil.CodeToPoint(x)) );
+		IFilter<Card> filter = new PredicatesFilter<Card> (
+			new Dictionary<string, IDictionary<string, Predicate<Card>>>() {
+				{
+					"COLOR" ,new Dictionary<string, Predicate<Card>> () {
+						{"HEART", x => x.Color == CardColor.HEART},
+						{"SPADE", x => x.Color == CardColor.SPADE},
+						{"CLUB", x => x.Color == CardColor.CLUB},
+						{"DIAMOND", x => x.Color == CardColor.DIAMOND},
+					}
+				} 
+			} 
+		);
+		provider = new IEnumerableDataProvider<Card> (allCards, filter);
+	}
+	#region implemented abstract members of DataProvider
+	public void fetch (SearcherData searcherCondition, Action<DataProviderResult<Card>> onDataFetched)
+	{
+		provider.fetch (searcherCondition, onDataFetched);
+	}
+	public SearcherData SearcherCandidate {
+		get {
+			return provider.SearcherCandidate;
+		}
+	}
+	#endregion
+} 
+
+2. View
+
+3. Controller
+In beta version you still need to write a simple controller between IDataProvider and UISearcher.
+
+In late version this should be eliminated by a standard search controller. 
 
 ## Q&A
 

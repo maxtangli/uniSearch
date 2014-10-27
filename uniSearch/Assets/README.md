@@ -185,6 +185,7 @@ Next step?
 
 - [ ] refine example: made UICheckBox.
 - [ ] refine example: provide more filter option.
+- [ ] UIFilter/UIOptionGroup/UIOption hierachy too complex. How to simplify it?
 
 - [ ] search controller component: DataProvider<T> should be a MonoBehaviour, how? reference to Event.args solution! 
 - [ ] github doc
