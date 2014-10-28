@@ -35,7 +35,7 @@ Here comes the question: In such a well designed project, what would be the time
 Here's your step with UniSearch:
 (NOTE: steps will be more simplified in future)
 
-1. Write a CardDataProvider class to support searching. 
+s1. Write a CardDataProvider class to support searching. 
 
 ```C#
 public class CardDataProvider : IDataProvider<Card> {
@@ -75,13 +75,13 @@ public class CardDataProvider : IDataProvider<Card> {
 } 
 ```
 
-2. Made a UISearcher by inspector.
+s2. Made a UISearcher by inspector.
 
 - Create a GameObject, add a UIFSRSearcher.
 - Drag a PJFilter Prefab into it, set properly amount of children by copy&paste.
 - Drag a PJPager Prefab into it.
 
-3. Write a PokerGallaryController class to handle interactions of UISearcher by CardDataProvider:
+s3. Write a PokerGallaryController class to handle interactions of UISearcher by CardDataProvider:
 
 ```C#
 public class PokerGallaryController : MonoBehaviour {
@@ -106,8 +106,8 @@ public class PokerGallaryController : MonoBehaviour {
 }
 ```
 
-4. Create a GameObject, Add PokerGallaryController.
-5. Run.
+s4. Create a GameObject, Add PokerGallaryController.
+s5. Run.
 
 ![Image3](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
 
