@@ -155,6 +155,17 @@ Next step?
 - show this to other people and get feedback. 
 - review the code by myself and try to improve.
 
+There's much to be improved.
+
+## design of checkbox filter
+
+Grid
+width 
+Label Grid: CB CB CB CB
+Label .....
+
+## Editor init issue for UISearcher?
+
 # TODO -> first beta
 
 - [x] github init
@@ -183,12 +194,14 @@ Next step?
 - [x] refine Model
 - [x] organize pj
 
-- [ ] refine example: made UICheckBox.
-- [ ] refine example: provide more filter option.
-- [ ] UIFilter/UIOptionGroup/UIOption hierachy too complex. How to simplify it?
+- [x] refine example: made UICheckBox.
+- [x] refine example: provide more filter option.
+
+- [ ] SearcherData editor init issues
+- [ ] dynamic count Filter
 
 - [ ] search controller component: DataProvider<T> should be a MonoBehaviour, how? reference to Event.args solution! 
-- [ ] github doc
+- [x] github doc roughly
 
 # TODO -> later
 - [ ] custom editor [later do since too complex]
@@ -196,6 +209,7 @@ Next step?
 - [ ] implement Sort [later do since not important]
 - [ ] TOO SLOW!!!!!? set timer.(300/600ms per search at first times, then keep 50ms common/300ms rarely, reason? count down each part to see.)
 - [ ] Unity + MonoDevelop support for 4.0, in order to use Tuple. 
+- [ ] UIFilter/UIOptionGroup/UIOption hierachy too complex. How to simplify it?
 
 # TODO -> refine
 - [ ] reference search mechanisms (if exist) in popular UILibrary: WinForm,WPF,WxWidgets etc.

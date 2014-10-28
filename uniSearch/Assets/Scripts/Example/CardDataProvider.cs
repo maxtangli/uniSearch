@@ -35,8 +35,16 @@ public class CardDataProvider : IDataProvider<Card> {
 						{"CLUB", x => x.Color == CardColor.CLUB},
 						{"DIAMOND", x => x.Color == CardColor.DIAMOND},
 					}
-				} 
-			} 
+				},
+				{
+					"POINT" ,new Dictionary<string, Predicate<Card>> () {
+						{"A", x => x.Point == 1},
+						{"2-5", x => x.Point >= 2 && x.Point <= 5},
+						{"6-10", x => x.Point >= 6 && x.Point <= 10},
+						{"J-K", x => x.Point >= 11},
+					}
+				}
+			}
 		);
 
 		// 3. new a dataProvider with a list of full datas IEnumerable and a IFilter.

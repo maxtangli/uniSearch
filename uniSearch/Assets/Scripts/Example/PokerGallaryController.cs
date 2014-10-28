@@ -21,6 +21,7 @@ public class PokerGallaryController : MonoBehaviour {
 
 	[ContextMenu("initUISearcher")]
 	void initUISearcher() {
+		provider = new CardDataProvider();
 		uiSearcher.SearcherData = provider.SearcherCandidate;
 	}
 	
@@ -33,14 +34,7 @@ public class PokerGallaryController : MonoBehaviour {
 	void onDataFetched (DataProviderResult<Card> result)
 	{
 		uiSearcher.NumTotal = result.numFiltered;
-		// buggy code: InstantiatePrefab executed unintended multiple times.
-		//  Func<Card, GameObject> dataToPrefab = card => UnityUtils.InstantiatePrefab(uiCardImagePrefab, p => p.Card = card).gameObject;
-		//  IEnumerable<GameObject> prefabs = result.datas.Select (dataToPrefab);
-		//var prefabs = result.datas.Select (card => UICardImage.InstantiatePrefab (card)).ToList ();
-		IList<GameObject> prefabs = new List<GameObject> ();
-		foreach (var card in result.datas) {
-			prefabs.Add(UICardImage.InstantiatePrefab(card).gameObject);
-		}
+		var prefabs = result.datas.Select (card => UICardImage.InstantiatePrefab (card).gameObject).ToList ();
 		uiGrid.setContents(prefabs);
 
 		watch.Stop ();

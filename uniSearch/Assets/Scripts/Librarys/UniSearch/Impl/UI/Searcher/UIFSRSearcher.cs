@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 
 // implement UISearcher with a UIFilter, UISorter and UIRanger
+[ExecuteInEditMode]
 public class UIFSRSearcher : UISearcher {
 	public UIFilter uiFilter;
 	public UISorter uiSorter;
@@ -32,10 +33,11 @@ public class UIFSRSearcher : UISearcher {
 	}
 	#endregion
 
+	[ContextMenu("initUISearcher")]
 	void Awake() {
 		uiFilter = uiFilter ?? GetComponentInChildren<UIFilter> () ?? gameObject.AddComponent<UINullFilter>();
 		uiSorter = uiSorter ?? GetComponentInChildren<UISorter> () ?? gameObject.AddComponent<UINullSorter>();
-		uiRanger = uiRanger ?? GetComponentInChildren<UIRanger> ();
+		uiRanger = uiRanger ?? GetComponentInChildren<UIRanger> () ?? gameObject.AddComponent<UINullRanger>();
 		
 		uiFilter.Interaction += onUIFilter;
 		uiSorter.Interaction += onUISorter;

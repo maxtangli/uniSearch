@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Example\CardDataProvider.cs" />
      <Compile Include="Assets\Scripts\Example\PJCommon\Card.cs" />
+     <Compile Include="Assets\Scripts\Example\PJCommon\NGUICheckboxControlOption.cs" />
      <Compile Include="Assets\Scripts\Example\PJCommon\UICardImage.cs" />
      <Compile Include="Assets\Scripts\Example\PokerGallaryController.cs" />
      <Compile Include="Assets\Scripts\Librarys\MyUtils\NGUIExtension.cs" />
@@ -205,7 +206,6 @@
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\Actor\IEnumerableDataProvider.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\Actor\PredicatesFilter.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\Adaptors\NGUIButtonOptionAdaptor.cs" />
-     <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\OptionGroup\UIDynamicOptionGrid.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\OptionGroup\UINullOptionGroup.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\OptionGroup\UIOptionList.cs" />
      <Compile Include="Assets\Scripts\Librarys\UniSearch\Impl\UI\Filter\UINullFilter.cs" />

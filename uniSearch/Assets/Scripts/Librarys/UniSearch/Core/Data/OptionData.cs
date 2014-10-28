@@ -44,13 +44,14 @@ public class OptionData {
 	public OptionData AntiCheck() {
 		return SpecificCheck (!IsChecked);
 	}
-
-	// NOTE: seems no meaning to compare with two OptionData
-	/*
 	public override string ToString ()
 	{
 		return string.Format ("{0}{1}", isChecked ? "+" : "-", Name);
-	}	
+	}
+
+	// NOTE: seems no meaning to compare with two OptionData
+	/*
+
 	
 
 	public override bool Equals (object obj)
