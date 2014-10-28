@@ -76,6 +76,7 @@ public class CardDataProvider : IDataProvider<Card> {
 ```
 
 2. Made a UISearcher by inspector.
+
 - Create a GameObject, add a UIFSRSearcher.
 - Drag a PJFilter Prefab into it, set properly amount of children by copy&paste.
 - Drag a PJPager Prefab into it.
