@@ -190,10 +190,12 @@ public class CardDataProvider : IDataProvider<Card> {
 ```
 
 part2. View
+
 Each project will customize a UISearch Prefab for all searching usecases.
 TODO
 
 part3. Controller
+
 In beta version you still need to write a simple controller between IDataProvider and UISearcher.
 
 In late version this should be eliminated by a standard search controller.
