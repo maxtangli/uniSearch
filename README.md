@@ -146,7 +146,7 @@ Addressing at this, UniSearch provide a standard solution such that:
 
 In UniSearch, the process is simplified by three parts:
 
-1. Model
+part1. Model
 
 In most cases, the mainly code you need to write is a IDataProvider that provide datas for searching conditions,
 which is typically implemented by few lines:
@@ -189,11 +189,11 @@ public class CardDataProvider : IDataProvider<Card> {
 } 
 ```
 
-2. View
+part2. View
 Each project will customize a UISearch Prefab for all searching usecases.
 TODO
 
-3. Controller
+part3. Controller
 In beta version you still need to write a simple controller between IDataProvider and UISearcher.
 
 In late version this should be eliminated by a standard search controller.
