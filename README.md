@@ -107,6 +107,7 @@ public class PokerGallaryController : MonoBehaviour {
 ```
 
 s4. Create a GameObject, Add PokerGallaryController.
+
 s5. Run.
 
 ![Image3](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
