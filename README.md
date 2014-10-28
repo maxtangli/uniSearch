@@ -115,10 +115,10 @@ You finished these things in 4 minutes. Add by the prior 1 minute, you spent tot
 
 You reported your task and ask if any other task to do, but the main programmer replyed as below:
 
-"You should understand why you are assigned 8 hours for a 5-mintues-task. 
-In our company, the main responsibility for a novice engineer IS NOT to do low-technology-level tasks, which has been almost eliminated by frameworks, libraries and components made by our master engineers! 
-Your main responsibility IS learning, learning and learning! 
-Best wishes for your grow up and the day that you join our master engineers and do real coding!"
+> "You should understand why you are assigned 8 hours for a 5-mintues-task. 
+> In our company, the main responsibility for a novice engineer IS NOT to do low-technology-level tasks, which has been almost eliminated by frameworks, libraries and components made by our master engineers! 
+> Your main responsibility IS learning, learning and learning! 
+> Best wishes for your grow up and the day that you join our master engineers and do real coding!"
 
 Feeling moving and encouraged, you go to the book store and pick up some books in topic of Object-Oriented Design.
 Taking the book back to your working desk, sit down, you said to yourself:
@@ -220,6 +220,11 @@ Unity・C#・設計力などの専門知識は無論、勉強の方法論はも�
 
 （注：おおげさ・かたいすぎるかな？）
 
+### Q: 自己評価？
+今までやっとライブラリーの雰囲気が出ってくる、（インターフェイスが多いから？）
+
+１４０時間もかけって、２０個くらいのクラスしか出てこないのは驚きました。使いやすい設計を出るのは難しい、もっとコード読みの勉強が必要だと考えます。
+
 ### Q: 検索UIは簡単な機能と思って、ライブラリー化の価値が本当にあるか？
 （本来は練習の目的ですが）PJで、検索UIのためわざわざライブラリーを使うのは大袈裟と思いますが、もしNGUIのようなUIライブラリーの一部として提供すれば、使う人もあるでしょう
 。
@@ -236,5 +241,5 @@ Unity・C#・設計力などの専門知識は無論、勉強の方法論はも�
 5. 改善。良いと思うユーザーが多いだったら、修正、改善、特性追加を進む。
 
 ### Q: このページに対する感想？
-コードより、最初のuser storyの書き方はもっと良い。
+コードより、最初のuser storyの書き方は良い。
 いつか広く使われているライブラリーのuser stroyを書ければいいな～
