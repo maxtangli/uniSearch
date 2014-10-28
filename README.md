@@ -26,16 +26,18 @@ Thus, you move into your scene (with UIRoot and other things prepared) begin you
 
 You are happy to made a raw view without search support in 1 minute, as picture below shows, with just 13 key/mouse operations and 0 lines of code.
 
-TODO image1 
+![Image1](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image1.jpg)
 
 Here comes the question: In such a well designed project, what would be the time cost to made things like image2 from image1?
 
-TODO image2
+![Image2](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image2.jpg)
 
 Here's your step with UniSearch:
 (NOTE: steps will be more simplified in future)
 
 1. Write a CardDataProvider class to support searching. 
+
+```C#
 public class CardDataProvider : IDataProvider<Card> {
 	IEnumerableDataProvider<Card> provider;
 	public CardDataProvider() {
@@ -71,6 +73,7 @@ public class CardDataProvider : IDataProvider<Card> {
 	public SearcherData SearcherCandidate { get {return provider.SearcherCandidate;} }
 	#endregion
 } 
+```
 
 2. Made a UISearcher by inspector.
 - Create a GameObject, add a UIFSRSearcher.
@@ -79,6 +82,7 @@ public class CardDataProvider : IDataProvider<Card> {
 
 3. Write a PokerGallaryController class to handle interactions of UISearcher by CardDataProvider:
 
+```C#
 public class PokerGallaryController : MonoBehaviour {
 	CardDataProvider provider = new CardDataProvider();
 	public UISearcher uiSearcher;
@@ -99,11 +103,12 @@ public class PokerGallaryController : MonoBehaviour {
 		uiGrid.setContents(prefabs);
 	}
 }
+```
 
 4. Create a GameObject, Add PokerGallaryController.
 5. Run.
 
-TODO image3
+![Image3](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
 
 You finished these things in 4 minutes. Add by the prior 1 minute, you spent totally 5 minutes to get today's task done.
 
@@ -145,6 +150,7 @@ In UniSearch, the process is simplified by three parts:
 In most cases, the mainly code you need to write is a IDataProvider that provide datas for searching conditions,
 which is typically implemented by few lines:
 
+```C#
 public class CardDataProvider : IDataProvider<Card> {
 	IEnumerableDataProvider<Card> provider;
 	public CardDataProvider() {
@@ -180,6 +186,7 @@ public class CardDataProvider : IDataProvider<Card> {
 	public SearcherData SearcherCandidate { get {return provider.SearcherCandidate;} }
 	#endregion
 } 
+```
 
 2. View
 Each project will customize a UISearch Prefab for all searching usecases.
@@ -226,3 +233,7 @@ Unity・C#・設計力などの専門知識は無論、勉強の方法論はも�
 3. demoの作成。最初は一番重要な特性だけを、質より開発速度重視の形で作り、自分またはユーザーにフィードバックをもらう。
 4. betaの作成。今回は重要な特性をピックアップし、質重視の形で作り、出来たら公開してまたユーザーにフィードバックをもらう。
 5. 改善。良いと思うユーザーが多いだったら、修正、改善、特性追加を進む。
+
+### Q: このページに対する感想？
+コードより、最初のuser storyの書き方はもっと良い。
+いつか広く使われているライブラリーのuser stroyを書ければいいな～
