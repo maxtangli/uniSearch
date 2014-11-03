@@ -4,8 +4,8 @@ uniSearch(developing)
 A practice aiming at a library to simplify Unity UI filter/sorter/pager workflow.
 
 ## TODO
-[ ] Improve readability. The summary page should be brief, and should be eaily understand by readers. 
-[ ] Add a tutorial video.
+- [ ] Improve readability. The summary page should be brief, and should be eaily understand by readers. 
+- [ ] Add a tutorial video.
 
 ## User Story: a novice unity programmer's happy workday.
 
