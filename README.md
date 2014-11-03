@@ -4,24 +4,33 @@ uniSearch(developing)
 A practice aiming at a library to simplify Unity UI filter/sorter/pager workflow.
 
 ## TODO
+- [x] A draft version of readme.
 - [ ] Improve readability. The summary page should be brief, and should be eaily understand by readers. 
 - [ ] Add a tutorial video.
 
-## User Story: a novice unity programmer's workday.
+## User Story: a novice unity programmer's one day.
 
-Suppose you are an novice Unity Programmer in a poker game project, and you are asked to made a scene of poker galary like picture below: 
+As a novice Unity Programmer in a poker game project, you are asked to made a poker galary scene like this: 
 
 ![Requirements](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image2.jpg)
 
-Since the project is well organized and designed, you soon find two things can be reused here: Card class and UICardImage prefab. With the help of NGUI UIGrid and Unity Editor Hotkeys, You get things like picture below in 1 minute, with the cost of about 20 key/mouse operations and 0 lines of code.
+In this weel designed project, you find these things helps: 
+- Card class
+- UICardImage prefab
+- NGUI UIGrid class 
+- Unity Editor Hotkeys
+
+You get things below in 1 minute, with the cost of about 20 key/mouse operations and 0 lines of code.
 
 ![1 Minute Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image1.jpg)
 
-Here comes the question: In such a well designed project, what would be the time cost to reach the requirement from this 1 minute result?
+Here comes the question: In a well designed project, what would be the cost to fullfil the requirement from this 1 minute result?
 
-UniSearch try to reach that goal in 4 minutes, with the cost of 2 customer-written classes and 1 pj-reused prefab.
+UniSearch try to reach the goal in 4 minutes, with the cost of 2 customer-written classes and 1 pj-reusable prefab.
 
-1 DataProvider Class: A CardDataProvider class, wihch provide search results for given search conditions.
+1 UISearcher prefab: A pj-reusable prefab with UISearcher MonoBehaviour script attached, which provides SearcherData under user interaction.
+
+1 DataProvider Class: A CardDataProvider class, wihch provide DataProviderResult for given SearcherData.
 
 ```C#
 public class CardDataProvider : IDataProvider<Card> {
@@ -61,9 +70,7 @@ public class CardDataProvider : IDataProvider<Card> {
 } 
 ```
 
-1 pj-reused prefab: A prefab with UISearcher monobehaviour script attached, which provide SearcherData with user interaction. 
-
-1 Controller Class: A controller class to handle interactions of UISearcher by CardDataProvider.
+1 Controller Class: A controller class to handle interactions between UISearcher and CardDataProvider.
 
 ```C#
 public class PokerGallaryController : MonoBehaviour {
@@ -88,6 +95,7 @@ public class PokerGallaryController : MonoBehaviour {
 }
 ```
 
+Here's the result:
 ![5 Minutes Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
 
 Finishing today's task in 5 minutes, you reported your work and ask if any other task to do, but the main programmer replyed as below:
@@ -97,7 +105,7 @@ Finishing today's task in 5 minutes, you reported your work and ask if any other
 > Your main responsibility IS learning, learning and learning! 
 > Best wishes for your grow up and the day that you join our master engineers and do real coding!"
 
-Feeling moving and encouraged, you go to the book store and pick up some books in topic of Object-Oriented Design.
+Feeling moving and encouraged, you go to the company library and pick up some books in topic of Object-Oriented Design.
 Taking the book back to your working desk, sit down, you said to yourself:
 "Now it's the start for my today's work!"
 
