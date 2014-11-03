@@ -24,7 +24,7 @@ You get things below in 1 minute, with the cost of about 20 key/mouse operations
 
 ![1 Minute Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image1.jpg)
 
-Here comes the question: In a well designed project, what would be the cost to fullfil the requirement from this 1 minute result?
+Here comes the question: *In a well designed project, what would be the cost to fullfil the requirement from this 1 minute result?*
 
 UniSearch try to reach the goal in 4 minutes, with the cost of 2 customer-written classes and 1 pj-reusable prefab.
 
