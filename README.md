@@ -20,13 +20,13 @@ In this weel designed project, you find these things helps:
 - NGUI UIGrid class 
 - Unity Editor Hotkeys
 
-You get things below in 1 minute, with the cost of about 20 key/mouse operations and 0 lines of code.
+You get things below in **1 minute, with the cost of about 20 key/mouse operations and 0 lines of code**.
 
 ![1 Minute Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image1.jpg)
 
 Here comes the question: **In a well designed project, what would be the cost to fullfil the requirement from this 1 minute result?**
 
-UniSearch try to reach the goal in 4 minutes, with the cost of 2 customer-written classes and 1 pj-reusable prefab.
+UniSearch try to reach the goal in **4 minutes, with the cost of 2 customer-written classes and 1 pj-reusable prefab**.
 
 1 UISearcher prefab: A pj-reusable prefab with UISearcher MonoBehaviour script attached, which provides SearcherData under user interaction.
 
@@ -95,7 +95,7 @@ public class PokerGallaryController : MonoBehaviour {
 }
 ```
 
-Here's the result:
+Here's the 5-minutes result:
 ![5 Minutes Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
 
 Finishing today's task in 5 minutes, you reported your work and ask if any other task to do, but the main programmer replyed as below:
@@ -107,12 +107,12 @@ Finishing today's task in 5 minutes, you reported your work and ask if any other
 
 Feeling moving and encouraged, you go to the company library and pick up some books in topic of Object-Oriented Design.
 Taking the book back to your working desk, sit down, you said to yourself:
-"Now it's the start for my today's work!"
+"Now it's the real begining of my today's work!"
 
 Point
 
 - Components saves time.
-- Time saved by components enable us to make more components.
+- Time saved by components enable us to make more components and saves more time.
 
 ## Q&A
 
