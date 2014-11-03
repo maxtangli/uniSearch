@@ -13,7 +13,6 @@ public abstract class UISearcher : MonoBehaviour
 	public abstract int NumTotal {
 		get;set;
 	}
-
 	public event EventHandler Interaction;
 	public void OnInteraction() {
 		if (Interaction != null) {
