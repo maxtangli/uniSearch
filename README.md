@@ -1,41 +1,54 @@
-uniSearch(developing)
+uniSearch(under developing)
 =========
 
 A practice aiming at a library to simplify Unity UI filter/sorter/pager workflow.
 
-## User Story: a novice unity programmer's happy workday.
+## TODO
+- [x] A draft version of readme.
+- [x] Improve readability. The summary page should be brief, and should be eaily understand by readers. 
+- [ ] Add a tutorial video.
 
-Suppose you are an novice Unity Programmer in a poker game project, and you are asked to made a scene of poker galary.
+## User Story: a novice unity programmer's one day.
 
-Here's the requirements: 
+As a novice Unity Programmer in a poker game project, you are asked to made a poker galary scene like this: 
 
-1. There are totally 52 kinds of poker cards.
-2. Show 5 cards per pages.
-3. User can choose which the color and point of poker cards to shown.
+![Requirements](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image2.jpg)
 
-Since the project is well organized and designed, you soon find two classes made by Main Programmer can be reused here:
+In this weel designed project, you find these things helps: 
+- PJ-reusable Card class
+- PJ-reusable UICardImage prefab
+- NGUI UIGrid class 
+- Unity Editor Hotkeys
 
-1. Card class, which means card data.
-2. UICardImage prefab, the view of a card, which can be customized by UICardImage.set(Card card)
+You get things below in **1 minute, with the cost of about 20 key/mouse operations and 0 lines of code**.
 
-Thus, you move into your scene (with UIRoot and other things prepared) begin your work by inspector:
+![1 Minute Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image1.jpg)
 
-1. Create a GameObject, Add a UIGrid. (4 key stroke: Ctrl+N, Ctrl+A, g, Enter)
-2. Drag 5 UICardImage Prefab into UIGrid. (5 mouse drag)
-3. In UIGrid inspector, adjust Cell Width and click Execute. (3 key stroke for digit "140", 1 mouse click) 
+Here comes the question: **In a well designed project, what would be the cost to fullfil the requirement from this 1 minute result?**
 
-You are happy to made a raw view without search support in 1 minute, as picture below shows, with just 13 key/mouse operations and 0 lines of code.
+UniSearch try to reach the goal in **4 minutes, with the cost of 2 customer-written classes and 1 pj-reusable prefab**.(Note that the steps will be more simpilified in future)
 
-![Image1](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image1.jpg)
+**1 UISearcher prefab**: A pj-reusable prefab with UISearcher MonoBehaviour script attached, which provides SearcherData under user interaction.
 
-Here comes the question: In such a well designed project, what would be the time cost to made things like image2 from image1?
+```C#
+public abstract class UISearcher : MonoBehaviour
+{
+	public abstract SearcherData SearcherData {
+		get;set;
+	}
+	public abstract int NumTotal {
+		get;set;
+	}
+	public event EventHandler Interaction;
+	public void OnInteraction() {
+		if (Interaction != null) {
+			Interaction(this,EventArgs.Empty);
+		}
+	}
+}
+```
 
-![Image2](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image2.jpg)
-
-Here's your step with UniSearch:
-(NOTE: steps will be more simplified in future)
-
-s1. Write a CardDataProvider class to support searching. 
+**1 DataProvider Class**: A CardDataProvider class, wihch provide DataProviderResult for given SearcherData.
 
 ```C#
 public class CardDataProvider : IDataProvider<Card> {
@@ -75,13 +88,7 @@ public class CardDataProvider : IDataProvider<Card> {
 } 
 ```
 
-s2. Made a UISearcher by inspector.
-
-- Create a GameObject, add a UIFSRSearcher.
-- Drag a PJFilter Prefab into it, set properly amount of children by copy&paste.
-- Drag a PJPager Prefab into it.
-
-s3. Write a PokerGallaryController class to handle interactions of UISearcher by CardDataProvider:
+**1 Controller Class**: A controller class to handle interactions between UISearcher and CardDataProvider.
 
 ```C#
 public class PokerGallaryController : MonoBehaviour {
@@ -106,100 +113,25 @@ public class PokerGallaryController : MonoBehaviour {
 }
 ```
 
-s4. Create a GameObject, Add PokerGallaryController.
+Here's the 5-minutes result:
 
-s5. Run.
+![5 Minutes Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
 
-![Image3](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
-
-You finished these things in 4 minutes. Add by the prior 1 minute, you spent totally 5 minutes to get today's task done.
-
-You reported your task and ask if any other task to do, but the main programmer replyed as below:
+Finishing today's task in 5 minutes, you reported your work and ask if any other task to do, but the main programmer replyed as below:
 
 > "You should understand why you are assigned 8 hours for a 5-mintues-task. 
 > In our company, the main responsibility for a novice engineer IS NOT to do low-technology-level tasks, which has been almost eliminated by frameworks, libraries and components made by our master engineers! 
 > Your main responsibility IS learning, learning and learning! 
 > Best wishes for your grow up and the day that you join our master engineers and do real coding!"
 
-Feeling moving and encouraged, you go to the book store and pick up some books in topic of Object-Oriented Design.
+Feeling moving and encouraged, you go to the company library and pick up some books in topic of Object-Oriented Design.
 Taking the book back to your working desk, sit down, you said to yourself:
-"Now it's the start for my today's work!"
+"Now it's the real begining of my today's work!"
 
 Point
 
 - Components saves time.
-- Time saved by components enable us to make more components.
-
-## Overview
-
-Data Querying UI(filter/sorter/pager) is common feature in games. 
-In Unity it's easy to made such things, but since no standard solution exists:
-- You should write code to handle trivial things: interaction, get data for searching condition in UI, update searching condition, etc.
-- You may failed to consider some cases: maintainability, flexibility, error handling, etc.
-- Hard to reuse in and between projects.
-- Not enough convenience: In a project, Querying UI is tend to provide little search conditions (since complex ones cost labours), which do not provide enough convenience for users.  
-
-Addressing at this, UniSearch provide a standard solution such that:
-- Least lines of code is need.
-- Don't make you think, since all cases handled properly.
-- Reusable.
-- Complex searching UI is OK since its labour cost is nearly the same as simple ones. 
-
-In UniSearch, the process is simplified by three parts:
-
-part1. Model
-
-In most cases, the mainly code you need to write is a IDataProvider that provide datas for searching conditions,
-which is typically implemented by few lines:
-
-```C#
-public class CardDataProvider : IDataProvider<Card> {
-	IEnumerableDataProvider<Card> provider;
-	public CardDataProvider() {
-		var allCards = Enumerable.Range (1, 52).Select (
-			x => new Card ( CardUtil.CodeToCardColor(x), CardUtil.CodeToPoint(x)) );
-		IFilter<Card> filter = new PredicatesFilter<Card> (
-			new Dictionary<string, IDictionary<string, Predicate<Card>>>() {
-				{
-					"COLOR" ,new Dictionary<string, Predicate<Card>> () {
-						{"HEART", x => x.Color == CardColor.HEART},
-						{"SPADE", x => x.Color == CardColor.SPADE},
-						{"CLUB", x => x.Color == CardColor.CLUB},
-						{"DIAMOND", x => x.Color == CardColor.DIAMOND},
-					}
-				},
-				{
-					"POINT" ,new Dictionary<string, Predicate<Card>> () {
-						{"A", x => x.Point == 1},
-						{"2-5", x => x.Point >= 2 && x.Point <= 5},
-						{"6-10", x => x.Point >= 6 && x.Point <= 10},
-						{"J-K", x => x.Point >= 11},
-					}
-				}
-			} 
-		);
-		provider = new IEnumerableDataProvider<Card> (allCards, filter);
-	}
-	#region implemented abstract members of DataProvider
-	public void fetch (SearcherData searcherCondition, Action<DataProviderResult<Card>> onDataFetched)
-	{
-		provider.fetch (searcherCondition, onDataFetched);
-	}
-	public SearcherData SearcherCandidate { get {return provider.SearcherCandidate;} }
-	#endregion
-} 
-```
-
-part2. View
-
-Each project will customize a UISearch Prefab for all searching usecases.
-TODO
-
-part3. Controller
-
-In beta version you still need to write a simple controller between IDataProvider and UISearcher.
-
-In late version this should be eliminated by a standard search controller.
+- Time saved by components enable us to make more components and saves more time.
 
 ## Q&A
 
@@ -207,7 +139,7 @@ In late version this should be eliminated by a standard search controller.
 仕事でコーティングする時、「一番よいデザイン・手順」より、「PJのデザインと合う、一番慣れる方法で早めに完成」が基本ですが、「難しくないが毎回同じようなものを作っている」「じっくり考えたらもっとよりデザインがあるはず」の感覚がよく出てきます。設計力を上げるため、個人PJをしようと考え、業務でよく作った「Filter/Sorter/Pagerなど検索UIのライブラリー化」をテーマとしました。
 
 ### Q: 困難は？
-最初の困難は「全然初められない！」（笑）。使いやすいの形は想像出来なくて、最初は何時間も考えても何も出てこないです。それに対し、「とりあいず何か作ってみよう」と思って、デザインをなしにコーティングを始めました。結果：動けるものが出ってきましたが、明らかにライブラリーとして使えないものです。でもそのおかげて、使いやすいの形のイメージがだんだん出てきました。（最初のコードはsvn_xxxをcheckoutすれば見られます。）
+最初の困難は「全然始められない！」（笑）。使いやすいの形は想像出来なくて、最初は何時間も考えても何も出てこないです。それに対し、「とりあいず何か作ってみよう」と思って、デザインをなしにコーティングを始めました。結果：動けるものが出ってきましたが、明らかにライブラリーとして使えないものです。でもそのおかげて、使いやすいの形のイメージがだんだん出てきました。（最初のコードはsvn_xxxをcheckoutすれば見られます。）
 
 途中出てきた困難は設計力不足です。コーティングすればするほど、「何故何時間もかけるのに、これくらいのコードしか出ってこない？」と気づいて、考えて見ると、「ロジックが複雑すぎて毎回ちゃんっと分析しなければならない」=>「どうすればDon't make me thinkingになれる？」、「複数のクラスを組み合わせるのは難しい」=>「どう設計すれば必ず使いやすい？」。対策としてオブジェクト指向デザインのレベルアップを決めました。[Agile Software Developmentの読書と練習](https://github.com/maxtangli/Personal/tree/master/2014.08_CSharp_EmployeePayment)をした後、デザインが前より良くなり、コーティングのスピードの改善が見られます。
 
@@ -224,13 +156,12 @@ Unity・C#・設計力などの専門知識は無論、勉強の方法論はも�
 （注：おおげさ・かたいすぎるかな？）
 
 ### Q: 自己評価？
-今までやっとライブラリーの雰囲気が出ってくる、（インターフェイスが多いから？）
+今までやっとライブラリーの雰囲気が出ってくる、（インターフェイスが多いからかもしれませんが）、これからはEditorのサポート、UI系クラスのシンプル化などを注力します。
 
 １４０時間もかけって、２０個くらいのクラスしか出てこないのは驚きました。使いやすい設計を出るのは難しい、もっとコード読みの勉強が必要だと考えます。
 
 ### Q: 検索UIは簡単な機能と思って、ライブラリー化の価値が本当にあるか？
-（本来は練習の目的ですが）PJで、検索UIのためわざわざライブラリーを使うのは大袈裟と思いますが、もしNGUIのようなUIライブラリーの一部として提供すれば、使う人もあるでしょう
-。
+（練習の目的もありますが）PJで、検索UIのためわざわざライブラリーを使うのは大袈裟と思いますが、もしNGUIのようなUIライブラリーの一部として提供すれば、使う人もあるでしょう。
 
 ### Q: 本格的にライブラリーを作る場合、どんな流れが良いと思う？
 個人好み用ならどうでもいいと思うか、本格的な場合は事前計画をしっかりしないと、「必要ない・使いにくいものが出ってしまう」「膨大な時間の浪費」などのリスクが出やすいと思う。
@@ -244,5 +175,9 @@ Unity・C#・設計力などの専門知識は無論、勉強の方法論はも�
 5. 改善。良いと思うユーザーが多いだったら、修正、改善、特性追加を進む。
 
 ### Q: このページに対する感想？
+
+正直なところ、設計力・言語知識はまた不足、ライブラリーの作成にはまた入門レベルでもない、と考えています。
+「このくらいのものをライブラリーと言うのは本当に大丈夫か」と悩んでいるところもありますが、個人のライブラリー作成の達人への道の一歩に対し、やっぱりとても良い経験になっているので、「ライブラリーと言ってもいいじゃないか」と考えています。
+
 コードより、最初のuser storyの書き方は良い。
 いつか広く使われているライブラリーのuser stroyを書ければいいな～
