@@ -9,13 +9,7 @@ A practice aiming at a library to simplify Unity UI filter/sorter/pager workflow
 
 ## User Story: a novice unity programmer's workday.
 
-Suppose you are an novice Unity Programmer in a poker game project, and you are asked to made a scene of poker galary.
-
-Here's the requirements: 
-
-1. There are totally 52 kinds of poker cards.
-2. Show 5 cards per pages.
-3. User can choose which the color and point of poker cards to shown.
+Suppose you are an novice Unity Programmer in a poker game project, and you are asked to made a scene of poker galary like picture below: 
 
 ![Requirements](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image2.jpg)
 
@@ -25,9 +19,9 @@ Since the project is well organized and designed, you soon find two things can b
 
 Here comes the question: In such a well designed project, what would be the time cost to reach the requirement from this 1 minute result?
 
-UniSearch try to reach that goal with 2 customer-written classes and 1 pj-reused prefab.
+UniSearch try to reach that goal in 4 minutes, with the cost of 2 customer-written classes and 1 pj-reused prefab.
 
-class-one: A CardDataProvider class, wihch provide search results for given search conditions.
+1 DataProvider Class: A CardDataProvider class, wihch provide search results for given search conditions.
 
 ```C#
 public class CardDataProvider : IDataProvider<Card> {
@@ -67,7 +61,9 @@ public class CardDataProvider : IDataProvider<Card> {
 } 
 ```
 
-1 controller class: A controller class to handle interactions of UISearcher by CardDataProvider.
+1 pj-reused prefab: A prefab with UISearcher monobehaviour script attached, which provide SearcherData with user interaction. 
+
+1 Controller Class: A controller class to handle interactions of UISearcher by CardDataProvider.
 
 ```C#
 public class PokerGallaryController : MonoBehaviour {
@@ -92,13 +88,9 @@ public class PokerGallaryController : MonoBehaviour {
 }
 ```
 
-1 pj-reused prefab: A prefab with UISearcher monobehaviour script attached, which provide SearcherData with user interaction. 
-
-You finished these things in 4 minutes. Add by the prior 1 minute, you spent totally 5 minutes to get today's task done.
-
 ![5 Minutes Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
 
-You reported your task and ask if any other task to do, but the main programmer replyed as below:
+Finishing today's task in 5 minutes, you reported your work and ask if any other task to do, but the main programmer replyed as below:
 
 > "You should understand why you are assigned 8 hours for a 5-mintues-task. 
 > In our company, the main responsibility for a novice engineer IS NOT to do low-technology-level tasks, which has been almost eliminated by frameworks, libraries and components made by our master engineers! 
@@ -113,77 +105,6 @@ Point
 
 - Components saves time.
 - Time saved by components enable us to make more components.
-
-## Overview
-
-Data Querying UI(filter/sorter/pager) is common feature in games. 
-In Unity it's easy to made such things, but since no standard solution exists:
-- You should write code to handle trivial things: interaction, get data for searching condition in UI, update searching condition, etc.
-- You may failed to consider some cases: maintainability, flexibility, error handling, etc.
-- Hard to reuse in and between projects.
-- Not enough convenience: In a project, Querying UI is tend to provide little search conditions (since complex ones cost labours), which do not provide enough convenience for users.  
-
-Addressing at this, UniSearch provide a standard solution such that:
-- Least lines of code is need.
-- Don't make you think, since all cases handled properly.
-- Reusable.
-- Complex searching UI is OK since its labour cost is nearly the same as simple ones. 
-
-In UniSearch, the process is simplified by three parts:
-
-part1. Model
-
-In most cases, the mainly code you need to write is a IDataProvider that provide datas for searching conditions,
-which is typically implemented by few lines:
-
-```C#
-public class CardDataProvider : IDataProvider<Card> {
-	IEnumerableDataProvider<Card> provider;
-	public CardDataProvider() {
-		var allCards = Enumerable.Range (1, 52).Select (
-			x => new Card ( CardUtil.CodeToCardColor(x), CardUtil.CodeToPoint(x)) );
-		IFilter<Card> filter = new PredicatesFilter<Card> (
-			new Dictionary<string, IDictionary<string, Predicate<Card>>>() {
-				{
-					"COLOR" ,new Dictionary<string, Predicate<Card>> () {
-						{"HEART", x => x.Color == CardColor.HEART},
-						{"SPADE", x => x.Color == CardColor.SPADE},
-						{"CLUB", x => x.Color == CardColor.CLUB},
-						{"DIAMOND", x => x.Color == CardColor.DIAMOND},
-					}
-				},
-				{
-					"POINT" ,new Dictionary<string, Predicate<Card>> () {
-						{"A", x => x.Point == 1},
-						{"2-5", x => x.Point >= 2 && x.Point <= 5},
-						{"6-10", x => x.Point >= 6 && x.Point <= 10},
-						{"J-K", x => x.Point >= 11},
-					}
-				}
-			} 
-		);
-		provider = new IEnumerableDataProvider<Card> (allCards, filter);
-	}
-	#region implemented abstract members of DataProvider
-	public void fetch (SearcherData searcherCondition, Action<DataProviderResult<Card>> onDataFetched)
-	{
-		provider.fetch (searcherCondition, onDataFetched);
-	}
-	public SearcherData SearcherCandidate { get {return provider.SearcherCandidate;} }
-	#endregion
-} 
-```
-
-part2. View
-
-Each project will customize a UISearch Prefab for all searching usecases.
-TODO
-
-part3. Controller
-
-In beta version you still need to write a simple controller between IDataProvider and UISearcher.
-
-In late version this should be eliminated by a standard search controller.
 
 ## Q&A
 
