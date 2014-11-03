@@ -7,7 +7,7 @@ A practice aiming at a library to simplify Unity UI filter/sorter/pager workflow
 - [ ] Improve readability. The summary page should be brief, and should be eaily understand by readers. 
 - [ ] Add a tutorial video.
 
-## User Story: a novice unity programmer's happy workday.
+## User Story: a novice unity programmer's workday.
 
 Suppose you are an novice Unity Programmer in a poker game project, and you are asked to made a scene of poker galary.
 
@@ -17,29 +17,17 @@ Here's the requirements:
 2. Show 5 cards per pages.
 3. User can choose which the color and point of poker cards to shown.
 
-Since the project is well organized and designed, you soon find two classes made by Main Programmer can be reused here:
+![Requirements](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image2.jpg)
 
-1. Card class, which means card data.
-2. UICardImage prefab, the view of a card, which can be customized by UICardImage.set(Card card)
+Since the project is well organized and designed, you soon find two things can be reused here: Card class and UICardImage prefab. With the help of NGUI UIGrid and Unity Editor Hotkeys, You get things like picture below in 1 minute, with the cost of about 20 key/mouse operations and 0 lines of code.
 
-Thus, you move into your scene (with UIRoot and other things prepared) begin your work by inspector:
+![1 Minute Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image1.jpg)
 
-1. Create a GameObject, Add a UIGrid. (4 key stroke: Ctrl+N, Ctrl+A, g, Enter)
-2. Drag 5 UICardImage Prefab into UIGrid. (5 mouse drag)
-3. In UIGrid inspector, adjust Cell Width and click Execute. (3 key stroke for digit "140", 1 mouse click) 
+Here comes the question: In such a well designed project, what would be the time cost to reach the requirement from this 1 minute result?
 
-You are happy to made a raw view without search support in 1 minute, as picture below shows, with just 13 key/mouse operations and 0 lines of code.
+UniSearch try to reach that goal with 2 customer-written classes and 1 pj-reused prefab.
 
-![Image1](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image1.jpg)
-
-Here comes the question: In such a well designed project, what would be the time cost to made things like image2 from image1?
-
-![Image2](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image2.jpg)
-
-Here's your step with UniSearch:
-(NOTE: steps will be more simplified in future)
-
-s1. Write a CardDataProvider class to support searching. 
+class-one: A CardDataProvider class, wihch provide search results for given search conditions.
 
 ```C#
 public class CardDataProvider : IDataProvider<Card> {
@@ -79,13 +67,7 @@ public class CardDataProvider : IDataProvider<Card> {
 } 
 ```
 
-s2. Made a UISearcher by inspector.
-
-- Create a GameObject, add a UIFSRSearcher.
-- Drag a PJFilter Prefab into it, set properly amount of children by copy&paste.
-- Drag a PJPager Prefab into it.
-
-s3. Write a PokerGallaryController class to handle interactions of UISearcher by CardDataProvider:
+1 controller class: A controller class to handle interactions of UISearcher by CardDataProvider.
 
 ```C#
 public class PokerGallaryController : MonoBehaviour {
@@ -110,13 +92,11 @@ public class PokerGallaryController : MonoBehaviour {
 }
 ```
 
-s4. Create a GameObject, Add PokerGallaryController.
-
-s5. Run.
-
-![Image3](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
+1 pj-reused prefab: A prefab with UISearcher monobehaviour script attached, which provide SearcherData with user interaction. 
 
 You finished these things in 4 minutes. Add by the prior 1 minute, you spent totally 5 minutes to get today's task done.
+
+![5 Minutes Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
 
 You reported your task and ask if any other task to do, but the main programmer replyed as below:
 
