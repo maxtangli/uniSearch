@@ -28,9 +28,27 @@ Here comes the question: **In a well designed project, what would be the cost to
 
 UniSearch try to reach the goal in **4 minutes, with the cost of 2 customer-written classes and 1 pj-reusable prefab**.
 
-1 UISearcher prefab: A pj-reusable prefab with UISearcher MonoBehaviour script attached, which provides SearcherData under user interaction.
+**1 UISearcher prefab**: A pj-reusable prefab with UISearcher MonoBehaviour script attached, which provides SearcherData under user interaction.
 
-1 DataProvider Class: A CardDataProvider class, wihch provide DataProviderResult for given SearcherData.
+```C#
+public abstract class UISearcher : MonoBehaviour
+{
+	public abstract SearcherData SearcherData {
+		get;set;
+	}
+	public abstract int NumTotal {
+		get;set;
+	}
+	public event EventHandler Interaction;
+	public void OnInteraction() {
+		if (Interaction != null) {
+			Interaction(this,EventArgs.Empty);
+		}
+	}
+}
+```
+
+**1 DataProvider Class**: A CardDataProvider class, wihch provide DataProviderResult for given SearcherData.
 
 ```C#
 public class CardDataProvider : IDataProvider<Card> {
@@ -70,7 +88,7 @@ public class CardDataProvider : IDataProvider<Card> {
 } 
 ```
 
-1 Controller Class: A controller class to handle interactions between UISearcher and CardDataProvider.
+**1 Controller Class**: A controller class to handle interactions between UISearcher and CardDataProvider.
 
 ```C#
 public class PokerGallaryController : MonoBehaviour {
@@ -96,6 +114,7 @@ public class PokerGallaryController : MonoBehaviour {
 ```
 
 Here's the 5-minutes result:
+
 ![5 Minutes Result](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image3.jpg)
 
 Finishing today's task in 5 minutes, you reported your work and ask if any other task to do, but the main programmer replyed as below:
