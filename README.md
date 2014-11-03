@@ -15,8 +15,8 @@ As a novice Unity Programmer in a poker game project, you are asked to made a po
 ![Requirements](https://github.com/maxtangli/uniSearch/blob/master/screenshot/image2.jpg)
 
 In this weel designed project, you find these things helps: 
-- Card class
-- UICardImage prefab
+- PJ-reusable Card class
+- PJ-reusable UICardImage prefab
 - NGUI UIGrid class 
 - Unity Editor Hotkeys
 
